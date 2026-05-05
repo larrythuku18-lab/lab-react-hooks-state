@@ -10,8 +10,9 @@ const ProductList = ({ products = [], addToCart }) => {
       ) : (
         products.map(product => (
           <div key={product.id}>
-            <span>{product.name}</span>
+            {product.name}
 
+      
             <button
               data-testid={`product-${product.id}`}
               onClick={() => addToCart(product)}
