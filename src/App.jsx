@@ -22,11 +22,11 @@ const handleAddToCart = (product) => {
         mode.
       </p>
 
-      {/* TODO: Render DarkModeToggle and implement dark mode functionality */}
+      <DarkModeToggle darkMode={darkMode} setDarkMode={setDarkMode} />
 
       {/* TODO: Implement category filter dropdown */}
       <label>Filter by Category: </label>
-      <select>
+      <select value={category} onChange={(e) => setCategory(e.target.value)}>
         <option value="all">All</option>
         <option value="Fruits">Fruits</option>
         <option value="Dairy">Dairy</option>
@@ -34,7 +34,8 @@ const handleAddToCart = (product) => {
 
       <ProductList />
 
-      {/* TODO: Implement and render Cart component */}
+      <Cart cartItems={cartItems} />
+      
     </div>
   )
 }
