@@ -1,17 +1,30 @@
-import React from 'react'
+import React from 'react';
 
-const Cart = () => {
+const Cart = ({ cartItems }) => {
+  // Calculate total price using the reduce method
+  const totalPrice = cartItems.reduce((total, item) => total + item.price, 0);
+
   return (
-    <div>
-      <h2>Shopping Cart</h2>
-      <ul>
-        {/* TODO: Include items here in li tags with text 'ITEM.NAME is in your cart.' */}
-        {cartItems.map((item, index) => (
-  <li key={index}>{item.name} is in your cart.</li>
-))}
-      </ul>
+    <div className="cart-section" style={{ marginTop: '20px', borderTop: '2px solid #ccc' }}>
+      <h2>Your Shopping Cart</h2>
+      
+      {cartItems.length === 0 ? (
+        <p>Your cart is empty.</p>
+      ) : (
+        <>
+          <ul className="cart-list">
+            {cartItems.map((item, index) => (
+              // Using index as part of key if IDs aren't unique across multiple adds
+              <li key={`${item.id}-${index}`}>
+                {item.name} - ${item.price}
+              </li>
+            ))}
+          </ul>
+          <h3>Total: ${totalPrice.toFixed(2)}</h3>
+        </>
+      )}
     </div>
-  )
-}
+  );
+};
 
-export default Cart
+export default Cart;
