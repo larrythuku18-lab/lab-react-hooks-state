@@ -1,24 +1,20 @@
-import React from 'react';
-import ProductCard from './ProductCard';
+import React from "react";
 
-const ProductList = ({ products, category, onAddToCart }) => {
-  // 1. Filter the products inside the component
-  const filteredProducts = category === 'All' 
-    ? products 
-    : products.filter(product => product.category === category);
+const ProductList = ({ products = [] }) => {
+  // Prevents crash if products is undefined
+  const filteredProducts = products.filter(product => product);
 
-  // 2. Return the JSX inside the component
   return (
-    <div className="product-list">
+    <div>
+      <h2>Products</h2>
+
       {filteredProducts.length === 0 ? (
         <p>No products available</p>
       ) : (
         filteredProducts.map(product => (
-          <ProductCard 
-            key={product.id} 
-            product={product} 
-            onAddToCart={onAddToCart} 
-          />
+          <div key={product.id}>
+            {product.name}
+          </div>
         ))
       )}
     </div>
