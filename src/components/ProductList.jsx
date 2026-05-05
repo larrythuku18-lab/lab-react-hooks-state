@@ -12,7 +12,6 @@ const ProductList = ({ products = [], addToCart }) => {
           <div key={product.id}>
             <span>{product.name}</span>
 
-            {/* ✅ REQUIRED FOR TEST */}
             <button
               data-testid={`product-${product.id}`}
               onClick={() => addToCart(product)}
