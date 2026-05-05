@@ -5,11 +5,15 @@ import Cart from './components/Cart'
 
 const App = () => {
   // TODO: Implement state for dark mode toggle
-
+const [darkMode, setDarkMode] = useState(false)
+const [cartItems, setCartItems] = useState([])
+const [category, setCategory] = useState('all')
   // TODO: Implement state for cart management
-
+const handleAddToCart = (product) => {
+  setCartItems((prev) => [...prev, product])
+}
   // TODO: Implement state for category filtering
-
+<select value={category} onChange={(e) => setCategory(e.target.value)}></select>
   return (
     <div>
       <h1>🛒 Shopping App</h1>
